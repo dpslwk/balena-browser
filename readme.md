@@ -30,7 +30,7 @@ volumes:
 services:
 
   browser:
-    image: bh.cr/balenalabs/browser-<arch> # where <arch> is one of aarch64, arm32 or amd64
+    image: bh.cr/lwk/browser-<arch> # where <arch> is one of aarch64, arm32 or amd64
     privileged: true # required for UDEV to find plugged in peripherals such as a USB mouse
     ports:
         - '5011' # management API (optional)
@@ -44,7 +44,7 @@ To pin to a specific [version](CHANGELOG.md) of this block use:
 ```yaml
 services:
   browser:
-    image: bh.cr/balenalabs/browser-<arch>/<version>
+    image: bh.cr/lwk/browser-<arch>/<version>
     privileged: true # required for UDEV to find plugged in peripherals such as a USB mouse
     ports:
         - '5011' # management API (optional)
@@ -64,7 +64,7 @@ By default the `browser` block uses the first local display (i.e. `DISPLAY=:0`) 
 
 *dockerfile.template*
 ```Dockerfile
-FROM bh.cr/balenalabs/browser-%%BALENA_ARCH%%
+FROM bh.cr/lwk/browser-%%BALENA_ARCH%%
 
 CMD ["export DISPLAY=:1"]
 ```
@@ -107,7 +107,7 @@ volumes:
 services:
   browser:
     restart: always
-    image: bh.cr/balenalabs/browser-<arch>
+    image: bh.cr/lwk/browser-<arch>
     privileged: true
     volumes:
       - 'settings:/data'
@@ -127,9 +127,9 @@ In this example we add the `audio` block and route the `browser` audio to the Ra
 ```yaml
 services:
   browser:
-    image: bh.cr/balenalabs/browser-<arch>
+    image: bh.cr/lwk/browser-<arch>
   audio:
-    image: bh.cr/balenalabs/audio-<arch>
+    image: bh.cr/lwk/audio-<arch>
     privileged: true
     ports:
       - 4317:4317
